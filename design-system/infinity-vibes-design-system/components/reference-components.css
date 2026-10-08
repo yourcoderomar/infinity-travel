@@ -1,0 +1,32 @@
+.iv-headline { margin: 0; font-family: var(--font-display); font-weight: 800; text-transform: uppercase; line-height: .95; letter-spacing: 0; }
+.iv-headline__kicker { display: block; font-weight: 400; }
+.iv-headline__main { display: block; }
+.iv-headline--xl { font-size: 88px; }
+.iv-headline--l { font-size: 56px; }
+.iv-headline--m { font-size: 36px; line-height: 1.05; }
+.iv-headline--s { font-size: 24px; line-height: 1.15; }
+.iv-headline--ink { color: var(--ink); }
+.iv-headline--white { color: var(--white); }
+.iv-headline--lime { color: var(--lime); }
+
+.iv-btn { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-sans); font-size: 15px; font-weight: 600; line-height: 20px; padding: var(--space-3) var(--space-6); border-radius: var(--radius-pill); border: 2px solid transparent; cursor: pointer; text-decoration: none; transition: background-color .12s, color .12s; }
+.iv-btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.iv-btn--primary { background: var(--action); color: var(--on-action); }
+.iv-btn--primary:hover { background: var(--black); color: var(--white); }
+.iv-btn--highlight { background: var(--highlight); color: var(--on-highlight); }
+.iv-btn--highlight:hover { background: var(--white); color: var(--black); border-color: var(--black); }
+.iv-btn--outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+.iv-btn--outline:hover { background: var(--ink); color: var(--surface); }
+.iv-btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.iv-pill { display: inline-flex; align-items: center; font-family: var(--font-sans); font-size: 15px; font-weight: 500; line-height: 20px; padding: 8px var(--space-4); white-space: nowrap; }
+.iv-pill--pill { border-radius: var(--radius-pill); }
+.iv-pill--tag { border-radius: var(--radius-sm); font-size: 18px; padding: 6px var(--space-4); }
+.iv-pill--lime { background: var(--lime); color: var(--black); }
+.iv-pill--blue { background: var(--blue); color: var(--white); }
+.iv-pill--white { background: var(--white); color: var(--black); }
+
+.iv-datecard { display: inline-flex; flex-direction: column; align-items: center; gap: var(--space-4); font-family: var(--font-sans); }
+.iv-datecard__panel { background: var(--blue); color: var(--white); border-radius: var(--radius-lg); padding: var(--space-4) var(--space-8) var(--space-6); text-align: center; min-width: 180px; }
+.iv-datecard__month { font-size: 28px; line-height: 40px; font-weight: 600; }
+.iv-datecard__dates { list-style: none; margin: 0; padding: 0; font-size: 26px; line-height: 38px; }

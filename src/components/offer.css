@@ -1,0 +1,8 @@
+.iv-offer { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; gap: var(--space-3); font-family: var(--font-sans); }
+.iv-offer__deal { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-8) var(--space-12); border-radius: var(--radius-lg); background: var(--light-grey); }
+.iv-offer__big { font: 800 clamp(28px, 4vw, 48px)/1 var(--font-display); color: var(--blue); }
+.iv-offer__small { white-space: nowrap; font-size: 13px; line-height: 18px; color: var(--ink-muted); }
+.iv-offer__cta { display: flex; align-items: center; justify-content: center; gap: var(--space-3); padding: var(--space-8); border-radius: var(--radius-lg); background: var(--lime); color: var(--black); font: 600 clamp(18px, 2.4vw, 28px) var(--font-sans); text-decoration: none; transition: background-color .12s, color .12s; }
+.iv-offer__cta:hover { background: var(--black); color: var(--white); }
+.iv-offer__cta:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+@media (max-width: 640px) { .iv-offer { grid-template-columns: 1fr; } .iv-offer__deal { padding: var(--space-6); } }

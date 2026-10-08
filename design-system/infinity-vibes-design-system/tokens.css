@@ -1,0 +1,59 @@
+/* Infinity Vibes — generated from tokens.json. Source of truth: README.md + tokens.json */
+
+@font-face { font-family: "Poppins"; src: url("./fonts/Poppins-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("./fonts/Poppins-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("./fonts/Poppins-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("./fonts/Poppins-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Poppins"; src: url("./fonts/Poppins-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+
+:root, [data-theme="light"] {
+  --blue: #4949ea;
+  --lime: #ddf444;
+  --white: #ffffff;
+  --light-grey: #e6e7e8;
+  --black: #000000;
+  --surface: var(--white);
+  --surface-subtle: var(--light-grey);
+  --ink: var(--black);
+  --ink-muted: #4d4d4d;
+  --border: var(--light-grey);
+  --action: var(--blue);
+  --on-action: var(--white);
+  --highlight: var(--lime);
+  --on-highlight: var(--black);
+}
+
+[data-theme="dark"] {
+  --surface: var(--black);
+  --surface-subtle: #1c1c1c;
+  --ink: var(--white);
+  --ink-muted: #b3b3b3;
+  --border: #333333;
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-sm: 6px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+  --font-display: "Galano Grotesque", Poppins, "Segoe UI", system-ui, sans-serif;
+  --font-sans: Poppins, "Segoe UI", system-ui, sans-serif;
+}
+
+.display-xl { font-family: var(--font-display); font-size: 88px; line-height: 0.95; font-weight: 800; text-transform: uppercase; }
+.display-l { font-family: var(--font-display); font-size: 56px; line-height: 1; font-weight: 800; text-transform: uppercase; }
+.display-m { font-family: var(--font-display); font-size: 36px; line-height: 1.05; font-weight: 800; text-transform: uppercase; }
+.display-s { font-family: var(--font-display); font-size: 24px; line-height: 1.15; font-weight: 800; text-transform: uppercase; }
+.title { font-family: var(--font-sans); font-size: 22px; line-height: 30px; font-weight: 600; }
+.body-l { font-family: var(--font-sans); font-size: 18px; line-height: 28px; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 15px; line-height: 24px; font-weight: 400; }
+.label { font-family: var(--font-sans); font-size: 15px; line-height: 20px; font-weight: 500; }
+.caption { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }

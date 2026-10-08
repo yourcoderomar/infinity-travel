@@ -1,0 +1,16 @@
+.iv-how { display: grid; gap: var(--space-12); padding: var(--space-16) var(--space-6); }
+.iv-how__head { display: grid; justify-items: center; gap: var(--space-4); text-align: center; }
+.iv-how__head p { margin: 0; max-width: 480px; color: var(--ink-muted); }
+.iv-how .iv-dot { color: var(--blue); }
+.iv-how__grid { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: var(--space-3); align-items: end; max-width: 1100px; margin: 0 auto; width: 100%; }
+.iv-how__card { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-8); min-height: 280px; padding: var(--space-8); border-radius: var(--radius-lg); background: var(--light-grey); }
+.iv-how__card--featured { min-height: 400px; background: var(--blue); color: var(--white); }
+.iv-how__num { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: var(--white); color: var(--blue); font: 600 16px var(--font-sans); }
+.iv-how__card--featured .iv-how__num { background: transparent; color: var(--white); border: 2px solid var(--white); }
+.iv-how__orb { position: absolute; top: -70px; right: -70px; width: 220px; height: 220px; border-radius: 50%; background: var(--lime); }
+.iv-how__text { display: grid; justify-items: start; gap: var(--space-4); }
+.iv-how__text .body { margin: 0; }
+@media (max-width: 800px) { .iv-how { padding: var(--space-12) var(--space-4); } .iv-how__grid { grid-template-columns: 1fr; } .iv-how__card--featured { min-height: 360px; } }
+.iv-how__head .iv-headline__kicker, .iv-how__head .iv-headline__main { display: inline; }
+.iv-how__head .iv-headline__kicker { margin-right: .25em; }
+.iv-how .iv-light, .iv-how .iv-light .iv-headline__main { font-weight: 400; }
