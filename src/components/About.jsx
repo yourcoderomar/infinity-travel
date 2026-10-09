@@ -1,8 +1,8 @@
 import { Headline } from './Headline'
 import { OfferBar } from './OfferBar'
 
-// ponytail: placeholder photo + copy; swap `photo` for a trip shot
-export function About({ photo = '/imgs/hero.jpeg' }) {
+// ponytail: placeholder copy; swap `photo` for a trip shot
+export function About({ photo = '/imgs/about-group.jpg' }) {
   return (
     <section className="iv-about" id="about-us" aria-label="About Infinity Vibes">
       <img className="iv-about__photo" src={photo} alt="" />

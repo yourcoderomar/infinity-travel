@@ -4,11 +4,19 @@ import { Menu, X } from 'lucide-react'
 import { NavLink } from './NavLink'
 import { links } from '../data/links'
 import { Button } from './Button'
-import logo from '../assets/logos/badge-main.png'
+import logo from '../assets/logos/wordmark.png'
 
 
 export function Nav() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   useEffect(() => {
     if (!open) return
@@ -22,7 +30,8 @@ export function Nav() {
   }, [open])
 
   return (
-    <header className="iv-nav">
+    <header className={`iv-nav${scrolled ? ' is-scrolled' : ''}`}>
+      <div className="iv-nav__bar">
       <Link to="/" className="iv-nav__logo"><img src={logo} alt="Infinity Vibes" /></Link>
       <nav className="iv-nav__links">
         {links.map((l) => <NavLink key={l.href} {...l} />)}
@@ -42,11 +51,15 @@ export function Nav() {
           <nav>
             {links.map((l) => <NavLink key={l.href} {...l} onClick={() => setOpen(false)} />)}
           </nav>
+          <div className="iv-nav__mfoot">
           <label className="iv-nav__msearch">
             <input type="search" placeholder="Search for a place, city, or destination..." aria-label="Search" />
           </label>
+          <Button href="#trips" onClick={() => setOpen(false)}>Book now</Button>
+          </div>
         </div>
       )}
+      </div>
     </header>
   )
 }

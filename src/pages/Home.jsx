@@ -7,7 +7,10 @@ import { Testimonials } from '../components/Testimonials'
 export default function Home() {
   return (
     <>
-      <Hero image="/imgs/hero.jpeg" cutout="/imgs/hero-cutout.png" />
+      <Hero
+        image={{ desktop: '/imgs/hero-desktop.png', mobile: '/imgs/hero-mobile.png' }}
+        cutout={{ desktop: '/imgs/hero-cutout-desktop-t.png', mobile: '/imgs/hero-cutout-mobile-t.png' }}
+      />
       <Destinations />
       <HowItWorks />
       <About />

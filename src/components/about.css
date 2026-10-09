@@ -1,5 +1,5 @@
 .iv-about { display: grid; grid-template-columns: minmax(260px, 0.8fr) 1.6fr; gap: var(--space-12); align-items: center; padding: var(--space-12) var(--space-6) var(--space-16); }
-.iv-about__photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 55% center; border-radius: var(--radius-lg); }
+.iv-about__photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 64%; border-radius: var(--radius-lg); }
 .iv-about__text { display: grid; gap: var(--space-3); width: max-content; max-width: 100%; justify-self: start; }
 .iv-about__row { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); }
 .iv-about__row--end { align-items: flex-end; justify-content: space-between; }

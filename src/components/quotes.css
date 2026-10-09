@@ -8,3 +8,5 @@
 .iv-quotes__card--lime { background: var(--lime); color: var(--black); }
 .iv-quotes__card--grey { background: var(--light-grey); color: var(--black); }
 @media (max-width: 640px) { .iv-quotes { padding: var(--space-8) var(--space-4) var(--space-12); } }
+.iv-quotes .iv-headline__kicker { font-weight: 800; opacity: .3; }
+.iv-quotes .iv-headline--l { line-height: .85; }

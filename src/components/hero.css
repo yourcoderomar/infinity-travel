@@ -1,19 +1,23 @@
-.iv-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; min-height: min(680px, calc(100vh - 120px)); margin: 0 var(--space-6) var(--space-6); border-radius: var(--radius-lg); background: var(--blue) center / cover; }
+.iv-hero { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; padding: clamp(24px, 3vw, 40px) var(--space-12) var(--space-12); min-height: min(680px, calc(100vh - 120px)); margin: 0 var(--space-6) var(--space-6); border-radius: var(--radius-lg); background: var(--blue) center / cover; }
+.iv-hero--photo { background-image: var(--hero-d); }
+.iv-hero--photo::before { content: ""; position: absolute; inset: 0; background: var(--blue); opacity: .45; }
 .iv-hero__spark { position: absolute; right: -14%; top: 50%; height: 105%; transform: translateY(-50%); fill: var(--lime); }
-.iv-hero__title { position: absolute; z-index: 1; left: var(--space-12); top: 24%; font-size: clamp(48px, 10vw, 180px); white-space: nowrap; }
+.iv-hero__title { position: relative; z-index: 1; font-size: clamp(44px, 7.6vw, 128px); white-space: nowrap; }
 .iv-hero__cutout { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; }
-.iv-hero__content { position: absolute; z-index: 3; left: 0; top: calc(24% + clamp(48px, 10vw, 180px) + var(--space-4)); padding: 0 var(--space-12); display: grid; gap: var(--space-6); justify-items: start; max-width: 62%; }
+.iv-hero__content { position: relative; z-index: 3; margin-top: var(--space-4); display: grid; gap: var(--space-6); justify-items: start; max-width: 62%; }
+@media (min-width: 641px) { .iv-hero__content { margin-top: auto; } }
 .iv-hero__sub { margin: 0; max-width: 340px; color: var(--white); }
 .iv-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 .iv-btn--on-blue { color: var(--white); border-color: var(--white); }
 .iv-btn--on-blue:hover { background: var(--white); color: var(--black); }
 @media (max-width: 640px) {
-  .iv-hero { margin: 0 var(--space-4) var(--space-4); min-height: 780px; }
+  .iv-hero { margin: 0 var(--space-4) var(--space-4); min-height: 780px; padding: var(--space-8) var(--space-6) var(--space-6); }
+  .iv-hero--photo { background-image: var(--hero-m); }
+  .iv-hero--photo::before { opacity: .6; }
   .iv-hero__spark { opacity: .35; }
-  .iv-hero__title { top: 7%; left: var(--space-6); right: var(--space-6); white-space: normal; font-size: clamp(44px, 14vw, 72px); }
-  .iv-hero__content { display: contents; }
-  .iv-hero__sub { position: absolute; z-index: 3; left: var(--space-6); right: var(--space-6); top: calc(7% + 2 * clamp(44px, 14vw, 72px) * .95 + var(--space-4)); max-width: none; font-size: 15px; line-height: 24px; }
-  .iv-hero__actions { position: absolute; z-index: 3; left: var(--space-6); right: var(--space-6); bottom: var(--space-6); flex-wrap: nowrap; }
+  .iv-hero__title { white-space: normal; font-size: clamp(40px, 12vw, 64px); }
+  .iv-hero__content { max-width: none; gap: var(--space-4); }
+  .iv-hero__sub { max-width: none; font-size: 15px; line-height: 24px; }
+  .iv-hero__actions { flex-wrap: nowrap; }
   .iv-hero__actions .iv-btn { padding: var(--space-3) var(--space-4); font-size: 14px; white-space: nowrap; }
 }
-.iv-hero--photo::before { content: ""; position: absolute; inset: 0; background: var(--blue); opacity: .45; }

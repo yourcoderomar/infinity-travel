@@ -1,16 +1,14 @@
 import { Headline } from './Headline'
 import { Button } from './Button'
-import { DatePill } from './DatePill'
 
-export function DestinationCard({ name, length, dates, tone, image }) {
+// ponytail: sunset placeholder until each destination has its own photo (set `image` in data/destinations.js)
+export function DestinationCard({ name, tone, image = '/imgs/about-sunset.jpg' }) {
+  const photo = Boolean(image)
+  const dark = photo || tone === 'blue'
   return (
-    <article className={`iv-dest__card iv-dest__card--${tone}`} style={image ? { backgroundImage: `url(${image})` } : undefined}>
-      <Headline as="h3" size="m" tone={tone === 'blue' ? 'white' : 'ink'}>{name}</Headline>
-      <DatePill tone={tone === 'blue' ? 'lime' : 'blue'}>{length}</DatePill>
-      <ul className="iv-dest__dates">
-        {dates.map((d) => <li key={d}><DatePill tone="white">{d}</DatePill></li>)}
-      </ul>
-      <Button variant={tone === 'blue' ? 'highlight' : 'primary'} href="/#trips">Book by request</Button>
+    <article className={`iv-dest__card iv-dest__card--${tone}${photo ? ' iv-dest__card--photo' : ''}`} style={photo ? { backgroundImage: `url(${image})` } : undefined}>
+      <Headline as="h3" size="m" tone={dark ? 'white' : 'ink'}>{name}</Headline>
+      <Button variant={photo ? 'outline' : dark ? 'highlight' : 'primary'} className={photo ? 'iv-btn--on-blue' : ''} href="/#trips">Book now</Button>
     </article>
   )
 }
