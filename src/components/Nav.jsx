@@ -10,9 +10,19 @@ import logo from '../assets/logos/wordmark.png'
 export function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
+    let last = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 40)
+      // hide on scroll down, show on scroll up (ignore tiny jitters, always show near the top)
+      if (Math.abs(y - last) > 6) {
+        setHidden(y > 120 && y > last)
+        last = y
+      }
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -30,7 +40,7 @@ export function Nav() {
   }, [open])
 
   return (
-    <header className={`iv-nav${scrolled ? ' is-scrolled' : ''}`}>
+    <header className={`iv-nav${scrolled ? ' is-scrolled' : ''}${hidden && !open ? ' is-hidden' : ''}`}>
       <div className="iv-nav__bar">
       <Link to="/" className="iv-nav__logo"><img src={logo} alt="Infinity Vibes" /></Link>
       <nav className="iv-nav__links">
