@@ -14,3 +14,4 @@
 .iv-how__head .iv-headline__kicker, .iv-how__head .iv-headline__main { display: inline; }
 .iv-how__head .iv-headline__kicker { margin-right: .25em; }
 .iv-how .iv-light, .iv-how .iv-light .iv-headline__main { font-weight: 400; }
+@media (max-width: 800px) { .iv-how__card { min-height: 220px; padding: var(--space-6); } .iv-how__card--featured { min-height: 340px; } .iv-how__orb { width: 160px; height: 160px; top: -50px; right: -50px; } }

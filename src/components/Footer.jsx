@@ -2,7 +2,8 @@ import { Button } from './Button'
 import logo from '../assets/logos/badge-main.png'
 
 // ponytail: placeholder social/contact links, replace "#" with the real Instagram and WhatsApp URLs
-const links = ['Home', 'Destinations', 'Packages', 'Blog', 'About Us']
+import { links } from '../data/links'
+import { NavLink } from './NavLink'
 const contact = [
   { label: 'Instagram', href: '#' },
   { label: 'WhatsApp', href: '#' },
@@ -19,7 +20,7 @@ export function Footer() {
         </div>
         <nav className="iv-footer__col" aria-label="Footer">
           <span className="caption">Explore</span>
-          {links.map((l) => <a key={l} href={`#${l.toLowerCase().replace(' ', '-')}`}>{l}</a>)}
+          {links.map((l) => <NavLink key={l.href} {...l} />)}
         </nav>
         <div className="iv-footer__col">
           <span className="caption">Get in touch</span>

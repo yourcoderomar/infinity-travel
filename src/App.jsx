@@ -1,21 +1,29 @@
+import { useEffect } from 'react'
+import { Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { Nav } from './components/Nav'
-import { Hero } from './components/Hero'
-import { Destinations } from './components/Destinations'
-import { HowItWorks } from './components/HowItWorks'
-import { About } from './components/About'
-import { Testimonials } from './components/Testimonials'
 import { Footer } from './components/Footer'
+import Home from './pages/Home'
+import DestinationsPage from './pages/DestinationsPage'
 
-export default function App() {
+function Layout() {
+  const { pathname, hash } = useLocation()
+  useEffect(() => { if (!hash) window.scrollTo(0, 0) }, [pathname, hash])
   return (
     <>
       <Nav />
-      <Hero image="/imgs/hero.jpeg" cutout="/imgs/hero-cutout.png" />
-      <Destinations />
-      <HowItWorks />
-      <About />
-      <Testimonials />
+      <main><Outlet /></main>
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="destinations" element={<DestinationsPage />} />
+      </Route>
+    </Routes>
   )
 }

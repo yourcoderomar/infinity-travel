@@ -7,5 +7,13 @@
 .iv-hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 .iv-btn--on-blue { color: var(--white); border-color: var(--white); }
 .iv-btn--on-blue:hover { background: var(--white); color: var(--black); }
-@media (max-width: 640px) { .iv-hero { margin: 0 var(--space-4) var(--space-4); } .iv-hero__content { padding: 0 var(--space-6); top: calc(12% + clamp(48px, 10vw, 180px) + var(--space-4)); max-width: none; } .iv-hero__spark { opacity: .35; } .iv-hero__title { top: 12%; left: var(--space-6); } }
+@media (max-width: 640px) {
+  .iv-hero { margin: 0 var(--space-4) var(--space-4); min-height: 780px; }
+  .iv-hero__spark { opacity: .35; }
+  .iv-hero__title { top: 7%; left: var(--space-6); right: var(--space-6); white-space: normal; font-size: clamp(44px, 14vw, 72px); }
+  .iv-hero__content { display: contents; }
+  .iv-hero__sub { position: absolute; z-index: 3; left: var(--space-6); right: var(--space-6); top: calc(7% + 2 * clamp(44px, 14vw, 72px) * .95 + var(--space-4)); max-width: none; font-size: 15px; line-height: 24px; }
+  .iv-hero__actions { position: absolute; z-index: 3; left: var(--space-6); right: var(--space-6); bottom: var(--space-6); flex-wrap: nowrap; }
+  .iv-hero__actions .iv-btn { padding: var(--space-3) var(--space-4); font-size: 14px; white-space: nowrap; }
+}
 .iv-hero--photo::before { content: ""; position: absolute; inset: 0; background: var(--blue); opacity: .45; }

@@ -20,7 +20,7 @@ export function Hero({ image, cutout }) {
         </p>
         <div className="iv-hero__actions">
           <Button variant="highlight" href="#trips">Book a trip</Button>
-          <Button variant="outline" href="#destinations" className="iv-btn--on-blue">See destinations</Button>
+          <Button variant="outline" href="/destinations" className="iv-btn--on-blue">See destinations</Button>
         </div>
       </div>
     </section>
