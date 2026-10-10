@@ -1,0 +1,15 @@
+.iv-faq { display: grid; justify-items: center; gap: var(--space-8); padding: var(--space-12) var(--space-6) var(--space-16); }
+.iv-faq .iv-headline { text-align: center; max-width: 900px; }
+.iv-faq .iv-headline__kicker { font-weight: 800; opacity: .3; }
+.iv-faq .iv-dot { color: var(--blue); }
+.iv-faq__list { display: grid; gap: var(--space-3, 12px); width: 100%; max-width: 800px; }
+.iv-faq__item { border-radius: var(--radius-lg); background: var(--light-grey); interpolate-size: allow-keywords; }
+/* ponytail: height animation needs Chrome/Edge 131+; other browsers open instantly */
+.iv-faq__item::details-content { block-size: 0; overflow: hidden; transition: block-size 1s ease, content-visibility 1s allow-discrete; }
+.iv-faq__item[open]::details-content { block-size: auto; }
+.iv-faq__item summary { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); padding: var(--space-6); cursor: pointer; list-style: none; font: 800 clamp(18px, 1.8vw, 22px)/1.2 var(--font-display); text-transform: uppercase; }
+.iv-faq__item summary::-webkit-details-marker { display: none; }
+.iv-faq__item summary::after { content: '+'; flex: none; color: var(--blue); font: 400 28px/1 var(--font-sans); transition: transform .2s; }
+.iv-faq__item[open] summary::after { transform: rotate(45deg); }
+.iv-faq__item p { margin: 0; padding: 0 var(--space-6) var(--space-6); font: 400 16px/26px var(--font-sans); color: var(--ink-muted); }
+@media (max-width: 800px) { .iv-faq { padding: var(--space-8) var(--space-4) var(--space-12); } .iv-faq__item summary { padding: var(--space-4); } .iv-faq__item p { padding: 0 var(--space-4) var(--space-4); } }

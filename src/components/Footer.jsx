@@ -7,6 +7,7 @@ import { NavLink } from './NavLink'
 const contact = [
   { label: 'Instagram', href: '#' },
   { label: 'WhatsApp', href: '#' },
+  { label: 'Partner with us', href: '/about#partners' },
 ]
 
 export function Footer() {
@@ -16,7 +17,7 @@ export function Footer() {
         <div className="iv-footer__brand">
           <img src={logo} alt="Infinity Vibes" width="88" height="88" />
           <p className="body">Group trips out of Cairo. Pick a place, pick a date, book by request.</p>
-          <Button href="#trips">Book now</Button>
+          <Button href="/destinations">Book now</Button>
         </div>
         <nav className="iv-footer__col" aria-label="Footer">
           <span className="caption">Explore</span>

@@ -24,8 +24,8 @@ export function Hero({ image, cutout }) {
           Group trips out of Cairo to Dahab, Fayoum, Ain El Sokhna and beyond. Pick a place, pick a date, book by request.
         </p>
         <div className="iv-hero__actions">
-          <Button variant="highlight" href="#trips">Book a trip</Button>
-          <Button variant="outline" href="/destinations" className="iv-btn--on-blue">See destinations</Button>
+          <Button variant="highlight" href="/destinations">Book a trip</Button>
+          <Button variant="outline" href="#how-it-works" className="iv-btn--on-blue">How it works</Button>
         </div>
       </div>
     </section>

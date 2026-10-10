@@ -4,3 +4,5 @@ export const destinations = [
   { name: 'Fayoum', length: '2 Days/1 Night', dates: ['18/10', '25/10'], tone: 'lime' },
   { name: 'Ain El Sokhna', length: '3 Days/2 Nights', dates: ['16/10', '30/10'], tone: 'grey' },
 ]
+
+export const slugOf = (name) => name.toLowerCase().replace(/\s+/g, '-')

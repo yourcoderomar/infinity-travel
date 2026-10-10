@@ -47,7 +47,7 @@ export function Nav() {
         {links.map((l) => <NavLink key={l.href} {...l} />)}
       </nav>
       <input className="iv-nav__search" type="search" placeholder="Search for a place, city, or destination..." aria-label="Search" />
-      <Button href="#trips">Book now</Button>
+      <Button href="/destinations">Book now</Button>
       <button className="iv-nav__burger" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="iv-menu" onClick={() => setOpen(!open)}>
         {open ? <X size={24} strokeWidth={2.25} /> : <Menu size={24} strokeWidth={2.25} />}
       </button>
@@ -65,7 +65,7 @@ export function Nav() {
           <label className="iv-nav__msearch">
             <input type="search" placeholder="Search for a place, city, or destination..." aria-label="Search" />
           </label>
-          <Button href="#trips" onClick={() => setOpen(false)}>Book now</Button>
+          <Button href="/destinations" onClick={() => setOpen(false)}>Book now</Button>
           </div>
         </div>
       )}

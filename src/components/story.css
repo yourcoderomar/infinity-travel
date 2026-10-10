@@ -1,0 +1,7 @@
+.iv-story { padding: var(--space-16) var(--space-6); }
+.iv-story__text { display: grid; justify-items: center; gap: var(--space-4); max-width: 720px; margin: 0 auto; text-align: center; }
+.iv-story__text .iv-headline { margin-bottom: var(--space-4); }
+.iv-story .iv-light, .iv-story .iv-light .iv-headline__main { font-weight: 400; }
+.iv-story .iv-dot { color: var(--blue); }
+.iv-story__text p { margin: 0; color: var(--ink-muted); }
+@media (max-width: 800px) { .iv-story { padding: var(--space-12) var(--space-4); } }

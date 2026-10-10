@@ -1,0 +1,6 @@
+.iv-numbers { margin: 0 var(--space-6) var(--space-12); padding: var(--space-16) var(--space-8); border-radius: var(--radius-lg); background: var(--blue); }
+.iv-numbers__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-8); max-width: 1000px; margin: 0 auto; padding: 0; list-style: none; text-align: center; }
+.iv-numbers__grid li { display: grid; gap: var(--space-3); }
+.iv-numbers__value { font: 800 clamp(48px, 8vw, 104px)/1 var(--font-display); font-variant-numeric: tabular-nums; color: var(--white); }
+.iv-numbers .caption { color: var(--lime); }
+@media (max-width: 640px) { .iv-numbers { margin: 0 var(--space-4) var(--space-8); padding: var(--space-12) var(--space-6); } .iv-numbers__grid { grid-template-columns: 1fr; gap: var(--space-8); } }

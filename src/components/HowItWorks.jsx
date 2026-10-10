@@ -23,7 +23,7 @@ export function HowItWorks() {
             <div className="iv-how__text">
               <Headline as="h3" size="s" tone={featured ? 'white' : 'ink'}>{title[0]}<br />{title[1]}</Headline>
               {featured && <p className="body">{body}</p>}
-              {featured && <Button variant="highlight" href="#trips">Book by request</Button>}
+              {featured && <Button variant="highlight" href="/destinations">Book by request</Button>}
             </div>
           </article>
         ))}
