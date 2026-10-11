@@ -34,7 +34,13 @@ function CountUp({ to, suffix = '', duration = 1600 }) {
     return () => { io.disconnect(); cancelAnimationFrame(raf) }
   }, [to, duration])
 
-  return <span ref={ref} className="iv-numbers__value">{n.toLocaleString('en')}{suffix}</span>
+  // the animated number is hidden from screen readers, which get the final value straight away
+  return (
+    <>
+      <span ref={ref} className="iv-numbers__value" aria-hidden="true">{n.toLocaleString('en')}{suffix}</span>
+      <span className="iv-sr">{to.toLocaleString('en')}{suffix}</span>
+    </>
+  )
 }
 
 export function Numbers() {

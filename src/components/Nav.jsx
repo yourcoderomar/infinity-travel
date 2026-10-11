@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { NavLink } from './NavLink'
@@ -11,6 +11,7 @@ export function Nav() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const burger = useRef(null)
 
   useEffect(() => {
     let last = window.scrollY
@@ -30,12 +31,20 @@ export function Nav() {
 
   useEffect(() => {
     if (!open) return
-    const onKey = (e) => e.key === 'Escape' && setOpen(false)
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return
+      setOpen(false)
+      burger.current?.focus()
+    }
     window.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
+    // the menu covers the page, so keep keyboard and screen reader users out of it
+    const behind = document.querySelectorAll('main, footer')
+    behind.forEach((el) => { el.inert = true })
     return () => {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
+      behind.forEach((el) => { el.inert = false })
     }
   }, [open])
 
@@ -43,12 +52,12 @@ export function Nav() {
     <header className={`iv-nav${scrolled ? ' is-scrolled' : ''}${hidden && !open ? ' is-hidden' : ''}`}>
       <div className="iv-nav__bar">
       <Link to="/" className="iv-nav__logo"><img src={logo} alt="Infinity Vibes" /></Link>
-      <nav className="iv-nav__links">
+      <nav className="iv-nav__links" aria-label="Main">
         {links.map((l) => <NavLink key={l.href} {...l} />)}
       </nav>
       <input className="iv-nav__search" type="search" placeholder="Search for a place, city, or destination..." aria-label="Search" />
       <Button href="/destinations">Book now</Button>
-      <button className="iv-nav__burger" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="iv-menu" onClick={() => setOpen(!open)}>
+      <button ref={burger} className="iv-nav__burger" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls={open ? 'iv-menu' : undefined} onClick={() => setOpen(!open)}>
         {open ? <X size={24} strokeWidth={2.25} /> : <Menu size={24} strokeWidth={2.25} />}
       </button>
       {open && (
@@ -58,7 +67,7 @@ export function Nav() {
               <path d="M50 0C54 32 68 46 100 50C68 54 54 68 50 100C46 68 32 54 0 50C32 46 46 32 50 0Z" />
             </svg>
           </div>
-          <nav>
+          <nav aria-label="Main">
             {links.map((l) => <NavLink key={l.href} {...l} onClick={() => setOpen(false)} />)}
           </nav>
           <div className="iv-nav__mfoot">

@@ -45,3 +45,26 @@
 @keyframes iv-spin { to { transform: rotate(360deg); } }
 .iv-nav__logo:hover img, .iv-nav__logo:focus-visible img { animation: iv-spin .7s ease; }
 @media (prefers-reduced-motion: reduce) { .iv-nav__logo:hover img, .iv-nav__logo:focus-visible img { animation: none; } }
+
+/* entrance: bar drops in, contents fade up in turn (fill: backwards, so the scroll-hide transform still works afterwards) */
+@keyframes iv-nav-drop { from { opacity: 0; transform: translateY(-100%); } }
+@keyframes iv-nav-in { from { opacity: 0; transform: translateY(-8px); } }
+.iv-nav__bar { animation: iv-nav-drop .8s cubic-bezier(.16, 1, .3, 1) backwards; }
+.iv-nav__logo, .iv-nav__links a, .iv-nav__search, .iv-nav__bar > .iv-btn, .iv-nav__burger { animation: iv-nav-in .6s cubic-bezier(.16, 1, .3, 1) backwards; }
+.iv-nav__logo { animation-delay: .25s; }
+.iv-nav__links a:nth-child(1) { animation-delay: .35s; }
+.iv-nav__links a:nth-child(2) { animation-delay: .42s; }
+.iv-nav__links a:nth-child(3) { animation-delay: .49s; }
+.iv-nav__links a:nth-child(n+4) { animation-delay: .56s; }
+.iv-nav__search { animation-delay: .55s; }
+.iv-nav__bar > .iv-btn, .iv-nav__burger { animation-delay: .65s; }
+@media (max-width: 1000px) {
+  .iv-nav__menu nav a { animation: iv-nav-in .5s cubic-bezier(.16, 1, .3, 1) backwards; }
+  .iv-nav__menu nav a:nth-child(2) { animation-delay: .06s; }
+  .iv-nav__menu nav a:nth-child(3) { animation-delay: .12s; }
+  .iv-nav__menu nav a:nth-child(n+4) { animation-delay: .18s; }
+}
+@media (prefers-reduced-motion: reduce) { .iv-nav__bar, .iv-nav__logo, .iv-nav__links a, .iv-nav__search, .iv-nav__bar > .iv-btn, .iv-nav__burger, .iv-nav__menu nav a { animation: none; } }
+
+/* a keyboard user tabbing into the hidden nav brings it back into view (:focus-visible, so a mouse click doesn't keep it pinned) */
+.iv-nav:has(:focus-visible) .iv-nav__bar { transform: none; }

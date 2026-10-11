@@ -15,9 +15,9 @@ export function HowItWorks() {
         <Headline as="h2" size="l" className="iv-light">Journey made simple<span className="iv-dot">.</span></Headline>
         <p className="body-l">Three steps from scrolling Instagram to splashing in the sea.</p>
       </div>
-      <div className="iv-how__grid">
+      <ol className="iv-how__grid">
         {steps.map(({ n, title, body, featured }) => (
-          <article key={n} className={`iv-how__card${featured ? ' iv-how__card--featured' : ''}`}>
+          <li key={n} className={`iv-how__card${featured ? ' iv-how__card--featured' : ''}`}>
             {featured && <span className="iv-how__orb" aria-hidden="true" />}
             <span className="iv-how__num">{n}</span>
             <div className="iv-how__text">
@@ -25,9 +25,9 @@ export function HowItWorks() {
               {featured && <p className="body">{body}</p>}
               {featured && <Button variant="highlight" href="/destinations">Book by request</Button>}
             </div>
-          </article>
+          </li>
         ))}
-      </div>
+      </ol>
     </section>
   )
 }

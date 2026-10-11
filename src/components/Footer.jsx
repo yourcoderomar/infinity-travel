@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Button } from './Button'
 import logo from '../assets/logos/badge-main.png'
 
@@ -21,16 +22,20 @@ export function Footer() {
         </div>
         <nav className="iv-footer__col" aria-label="Footer">
           <span className="caption">Explore</span>
-          {links.map((l) => <NavLink key={l.href} {...l} />)}
+          <ul>
+            {links.map((l) => <li key={l.href}><NavLink {...l} /></li>)}
+          </ul>
         </nav>
         <div className="iv-footer__col">
           <span className="caption">Get in touch</span>
-          {contact.map(({ label, href }) => <a key={label} href={href}>{label}</a>)}
+          <ul>
+            {contact.map(({ label, href }) => <li key={label}><a href={href}>{label}</a></li>)}
+          </ul>
         </div>
       </div>
       <div className="iv-footer__bar caption">
         <span>© 2026 Infinity Vibes</span>
-        <span>Travel · Events · Experiences</span>
+        <span className="iv-footer__legal"><Link to="/terms">Terms &amp; Conditions</Link><Link to="/privacy">Privacy Policy</Link></span>
       </div>
     </footer>
   )
