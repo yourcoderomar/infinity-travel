@@ -22,6 +22,9 @@ import './components/gallery.css'
 import './components/cta.css'
 import './index.css'
 import App from './App.jsx'
+import { tripsPromise } from './lib/api'
+
+tripsPromise().catch(() => {}) // start loading trips before React renders; pages show the error themselves
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

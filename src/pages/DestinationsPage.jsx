@@ -1,9 +1,10 @@
-import { useState } from 'react'
 import { Headline } from '../components/Headline'
 import { DestinationCard } from '../components/DestinationCard'
-import { destinations } from '../data/destinations'
+import { use, useState } from 'react'
+import { tripsPromise } from '../lib/api'
 
 export default function DestinationsPage() {
+  const destinations = use(tripsPromise())
   const [query, setQuery] = useState('')
   const shown = destinations.filter((d) => d.name.toLowerCase().includes(query.trim().toLowerCase()))
 
@@ -18,7 +19,7 @@ export default function DestinationsPage() {
       </div>
       {shown.length ? (
         <div className="iv-dest__grid">
-          {shown.map((d) => <DestinationCard key={d.name} {...d} />)}
+          {shown.map((d) => <DestinationCard key={d.slug} {...d} />)}
         </div>
       ) : (
         <p className="body-l iv-dest__empty">No destinations match your search.</p>

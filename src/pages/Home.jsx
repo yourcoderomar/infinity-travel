@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Hero } from '../components/Hero'
 import { Destinations } from '../components/Destinations'
 import { HowItWorks } from '../components/HowItWorks'
@@ -8,10 +9,10 @@ export default function Home() {
   return (
     <>
       <Hero
-        image={{ desktop: '/imgs/hero-desktop.png', mobile: '/imgs/hero-mobile.png' }}
-        cutout={{ desktop: '/imgs/hero-cutout-desktop-t.png', mobile: '/imgs/hero-cutout-mobile-t.png' }}
+        image={{ desktop: '/imgs/hero-desktop.webp', mobile: '/imgs/hero-mobile.webp' }}
+        cutout={{ desktop: '/imgs/hero-cutout-desktop-t.webp', mobile: '/imgs/hero-cutout-mobile-t.webp' }}
       />
-      <Destinations />
+      <Suspense fallback={<p className="iv-loading" role="status">Loading trips...</p>}><Destinations /></Suspense>
       <HowItWorks />
       <About />
       <Testimonials />

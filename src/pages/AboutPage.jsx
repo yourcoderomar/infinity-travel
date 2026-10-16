@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Headline } from '../components/Headline'
 import ScrollExpand from '../components/ScrollExpand'
 import { Partners } from '../components/Partners'
@@ -48,7 +49,7 @@ export default function AboutPage() {
       <Partners />
       <Gallery />
       <Faq />
-      <CtaBanner />
+      <Suspense fallback={null}><CtaBanner /></Suspense>
     </>
   )
 }
