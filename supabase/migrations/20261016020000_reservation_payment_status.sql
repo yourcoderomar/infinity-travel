@@ -1,0 +1,8 @@
+-- Payment-aware booking status, set by admins in the dashboard (enum = dropdown in the Table editor).
+-- new -> confirmed -> deposit_paid (50%) -> paid (full amount); cancelled frees the seats.
+create type public.reservation_status as enum ('new', 'confirmed', 'deposit_paid', 'paid', 'cancelled');
+
+alter table public.reservations drop constraint reservations_status_check;
+alter table public.reservations alter column status drop default;
+alter table public.reservations alter column status type public.reservation_status using status::public.reservation_status;
+alter table public.reservations alter column status set default 'new';

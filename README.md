@@ -18,8 +18,8 @@ Schema lives in `supabase/migrations`, starter catalogue in `supabase/seed.sql`.
 - `reservations` has RLS on and no policies, so the public key can't read or write it directly. Guests book through
   the `create_reservation` RPC, which checks the departure is upcoming, the package belongs to the trip, seats are left,
   and computes the total server side. A trigger caps bookings at 3 per phone per day and 15 per departure per hour.
-- Edit trips and read reservations in the Supabase dashboard (Table editor). Set `status` to `confirmed` / `cancelled`;
-  cancelled bookings free their seats.
+- Edit trips and read reservations in the Supabase dashboard (Table editor). Admins set `status` from the dropdown:
+  `new` → `confirmed` → `deposit_paid` (50% paid) → `paid` (full amount), or `cancelled`, which frees the seats.
 
 First deploy of the database:
 
