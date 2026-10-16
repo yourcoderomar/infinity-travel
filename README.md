@@ -18,6 +18,8 @@ Schema lives in `supabase/migrations`, starter catalogue in `supabase/seed.sql`.
 - `reservations` has RLS on and no policies, so the public key can't read or write it directly. Guests book through
   the `create_reservation` RPC, which checks the departure is upcoming, the package belongs to the trip, seats are left,
   and computes the total server side. A trigger caps bookings at 3 per phone per day and 15 per departure per hour.
+- Trip photos: upload to Storage → `trips` bucket (webp/jpg/png, max 2 MB, e.g. `dahab/cover.webp`), then put that path in
+  `trips.cover_image` (destination cards) and/or `trips.images` (trip page, first one shown). Full URLs also work.
 - Edit trips and read reservations in the Supabase dashboard (Table editor). Admins set `status` from the dropdown:
   `new` → `confirmed` → `deposit_paid` (50% paid) → `paid` (full amount), or `cancelled`, which frees the seats.
 

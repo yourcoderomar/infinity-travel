@@ -18,12 +18,15 @@ const tripQuery = 'trips?published=eq.true&order=sort&select=slug,name,tone,cove
   + 'trip_options(label,departures(id,departs_on,seats)),packages(id,name,board,price_egp)'
   + '&trip_options.order=sort&trip_options.departures.order=departs_on&packages.order=sort'
 
+// trips.cover_image / images hold a path in the "trips" Storage bucket ('dahab/cover.webp'), a full URL, or a site path ('/imgs/x.jpg')
+const photo = (v) => (/^(https?:)?\/|^data:/.test(v) ? v : `${url}/storage/v1/object/public/trips/${v.split('/').map(encodeURIComponent).join('/')}`)
+
 const toTrip = (t) => ({
   slug: t.slug,
   name: t.name,
   tone: t.tone,
-  image: t.cover_image ?? undefined,
-  images: t.images.length ? t.images : undefined,
+  image: t.cover_image ? photo(t.cover_image) : undefined,
+  images: t.images.map(photo),
   inclusions: t.inclusions,
   meeting: t.meeting_point,
   options: t.trip_options.map((o) => ({ length: o.label, departures: o.departures })),

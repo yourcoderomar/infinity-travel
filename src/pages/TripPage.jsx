@@ -5,8 +5,8 @@ import { Button } from '../components/Button'
 import { Faq } from '../components/Faq'
 import { createReservation, day, tripsPromise } from '../lib/api'
 
-// ponytail: shared placeholder photo until a trip sets `images` in Supabase
-const photos = ['/imgs/about-sunset.jpg']
+// ponytail: shared placeholder photo until a trip sets `images` or `cover_image` in Supabase
+const placeholder = '/imgs/about-sunset.jpg'
 
 const steps = ['Choose Package', 'Guest Details', 'Reservation Ticket']
 const egp = (n) => `${n.toLocaleString('en-US')} EGP`
@@ -65,7 +65,7 @@ export default function TripPage() {
       <section className="iv-trip">
         <aside className="iv-trip__info">
           <div className="iv-trip__poster">
-            <img src={(trip.images ?? photos)[0]} alt="" />
+            <img src={trip.images[0] ?? trip.image ?? placeholder} alt="" />
             <Headline as="h1" size="xl" tone="white" kicker="Trip to">{trip.name}<span className="iv-dot">.</span></Headline>
           </div>
           <h2 className="iv-trip__sub">Program Inclusions</h2>

@@ -1,7 +1,7 @@
 import { Headline } from './Headline'
 import { Button } from './Button'
 
-// ponytail: sunset placeholder until each destination has its own photo (set `cover_image` on the trip in Supabase)
+// ponytail: sunset placeholder until a trip sets `cover_image` in Supabase
 export function DestinationCard({ name, slug, tone, image = '/imgs/about-sunset.jpg' }) {
   const photo = Boolean(image)
   const dark = photo || tone === 'blue'
