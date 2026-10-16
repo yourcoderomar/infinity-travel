@@ -1,4 +1,4 @@
-import { Component, Suspense, useEffect } from 'react'
+import { Component, Suspense, lazy, useEffect } from 'react'
 import { Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { Nav } from './components/Nav'
 import { Footer } from './components/Footer'
@@ -9,6 +9,9 @@ import TripPage from './pages/TripPage'
 import LegalPage from './pages/LegalPage'
 import { Headline } from './components/Headline'
 import { Button } from './components/Button'
+
+// own chunk: visitors never download the admin code or supabase-js
+const AdminPage = lazy(() => import('./admin/AdminPage'))
 
 // trip pages set their own title
 const titles = { '/': 'Infinity Vibes | Group trips out of Cairo', '/destinations': 'Destinations', '/about': 'About us', '/terms': 'Terms & Conditions', '/privacy': 'Privacy Policy' }
@@ -72,6 +75,7 @@ function Layout() {
 export default function App() {
   return (
     <Routes>
+      <Route path="admin" element={<ErrorBoundary><Suspense fallback={<p className="iv-loading">Loading...</p>}><AdminPage /></Suspense></ErrorBoundary>} />
       <Route element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="destinations" element={<DestinationsPage />} />

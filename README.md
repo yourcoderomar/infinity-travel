@@ -39,6 +39,18 @@ node --env-file=.env supabase/check.mjs
 
 Want an email on every booking? Dashboard → Database → Webhooks on `reservations` insert.
 
+## Admin
+
+`/admin` (not linked from the site, `noindex`) manages reservations (status, delete), trips, durations, departure
+dates and seats, packages and photos. Access is enforced by RLS: only Supabase Auth users listed in `public.admins`
+can write. Add an admin:
+
+1. Dashboard → Authentication → Users → **Add user** (email + password, auto-confirm).
+2. SQL editor: `insert into public.admins (user_id) select id from auth.users where email = 'you@example.com';`
+
+Turn off public sign-ups (Authentication → Sign In / Providers → "Allow new users to sign up") so nobody else can
+create accounts; non-admin accounts can't do anything, but there's no reason to allow them.
+
 ## Deploy
 
 `vercel.json` adds the SPA fallback, security headers (incl. CSP allowing `*.supabase.co`) and long caching for hashed assets.
