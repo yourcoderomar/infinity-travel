@@ -2,7 +2,7 @@ import { Headline } from '../components/Headline'
 import { DestinationCard } from '../components/DestinationCard'
 import { use } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { tripsPromise } from '../lib/api'
+import { matches, tripsPromise } from '../lib/api'
 
 export default function DestinationsPage() {
   const destinations = use(tripsPromise())
@@ -10,7 +10,7 @@ export default function DestinationsPage() {
   const [params, setParams] = useSearchParams()
   const query = params.get('q') ?? ''
   const setQuery = (q) => setParams(q ? { q } : {}, { replace: true })
-  const shown = destinations.filter((d) => d.name.toLowerCase().includes(query.trim().toLowerCase()))
+  const shown = destinations.filter((d) => matches(d, query))
 
   return (
     <section className="iv-dest iv-dest--page">

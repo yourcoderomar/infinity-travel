@@ -40,6 +40,9 @@ export const tripsPromise = () => (trips ??= rest(tripQuery).then((rows) => rows
 // -> reservation id
 export const createReservation = (args) => rest('rpc/create_reservation', { method: 'POST', body: JSON.stringify(args) })
 
+// shared by the nav search and the destinations page
+export const matches = (trip, q) => trip.name.toLowerCase().includes(q.trim().toLowerCase())
+
 // '2026-11-05' -> '5 November' (date only, so no timezone shift)
 export const day = (iso, month = 'long') => new Date(`${iso}T00:00`).toLocaleDateString('en-GB', { day: 'numeric', month })
 export const nextDeparture = (trip) => trip.options
