@@ -60,7 +60,9 @@ export default function AdminPage() {
       if (done) setFlash({ text: done }) // loads pass null: errors only
       return result
     } catch (e) {
-      setFlash({ text: e.message ?? String(e), error: true })
+      // 23503 = foreign key: something still points at the row (bookings on a date/package/trip)
+      const text = e.code === '23503' ? 'Can\'t delete: it still has reservations. Hide the trip or cancel the bookings instead.' : (e.message ?? String(e))
+      setFlash({ text, error: true })
     }
   }, [])
 
@@ -293,6 +295,8 @@ function TripEditor({ trip, booked, act, reload, onDeleted }) {
 
   const deleteTrip = () => confirm(`Delete ${trip.name} with all its dates and packages? Trips with bookings can't be deleted, hide them instead.`) && act(async () => {
     await q(db.from('trips').delete().eq('id', trip.id))
+    const files = [trip.cover_image, ...trip.images].filter(isBucketPath)
+    if (files.length) db.storage.from('trips').remove(files) // only after the row is gone, so a refused delete keeps its photos
     onDeleted()
     await reload()
   }, `${trip.name} deleted`)
