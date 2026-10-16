@@ -25,6 +25,8 @@ import App from './App.jsx'
 import { tripsPromise } from './lib/api'
 
 tripsPromise().catch(() => {}) // start loading trips before React renders; pages show the error themselves
+// the browser restores the old scroll offset on reload before trips have loaded, landing mid-page: Layout owns scrolling instead
+history.scrollRestoration = 'manual'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
