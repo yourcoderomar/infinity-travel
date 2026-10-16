@@ -1,11 +1,16 @@
-import { useState } from 'react'
 import { Headline } from '../components/Headline'
 import { DestinationCard } from '../components/DestinationCard'
-import { destinations } from '../data/destinations'
+import { use } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { matches, tripsPromise } from '../lib/api'
 
 export default function DestinationsPage() {
-  const [query, setQuery] = useState('')
-  const shown = destinations.filter((d) => d.name.toLowerCase().includes(query.trim().toLowerCase()))
+  const destinations = use(tripsPromise())
+  // ?q= comes from the nav search too, and keeps a search shareable / reload-safe
+  const [params, setParams] = useSearchParams()
+  const query = params.get('q') ?? ''
+  const setQuery = (q) => setParams(q ? { q } : {}, { replace: true })
+  const shown = destinations.filter((d) => matches(d, query))
 
   return (
     <section className="iv-dest iv-dest--page">
@@ -18,7 +23,7 @@ export default function DestinationsPage() {
       </div>
       {shown.length ? (
         <div className="iv-dest__grid">
-          {shown.map((d) => <DestinationCard key={d.name} {...d} />)}
+          {shown.map((d) => <DestinationCard key={d.slug} {...d} />)}
         </div>
       ) : (
         <p className="body-l iv-dest__empty">No destinations match your search.</p>

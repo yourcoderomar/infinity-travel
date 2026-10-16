@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { NavLink } from './NavLink'
+import { NavSearch } from './NavSearch'
 import { links } from '../data/links'
 import { Button } from './Button'
 import logo from '../assets/logos/wordmark.png'
@@ -55,7 +56,7 @@ export function Nav() {
       <nav className="iv-nav__links" aria-label="Main">
         {links.map((l) => <NavLink key={l.href} {...l} />)}
       </nav>
-      <input className="iv-nav__search" type="search" placeholder="Search for a place, city, or destination..." aria-label="Search" />
+      <NavSearch className="iv-nav__searchform" inputClassName="iv-nav__search" />
       <Button href="/destinations">Book now</Button>
       <button ref={burger} className="iv-nav__burger" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls={open ? 'iv-menu' : undefined} onClick={() => setOpen(!open)}>
         {open ? <X size={24} strokeWidth={2.25} /> : <Menu size={24} strokeWidth={2.25} />}
@@ -71,9 +72,7 @@ export function Nav() {
             {links.map((l) => <NavLink key={l.href} {...l} onClick={() => setOpen(false)} />)}
           </nav>
           <div className="iv-nav__mfoot">
-          <label className="iv-nav__msearch">
-            <input type="search" placeholder="Search for a place, city, or destination..." aria-label="Search" />
-          </label>
+          <NavSearch className="iv-nav__msearch" onDone={() => setOpen(false)} />
           <Button href="/destinations" onClick={() => setOpen(false)}>Book now</Button>
           </div>
         </div>
