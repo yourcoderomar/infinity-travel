@@ -1,11 +1,15 @@
 import { Headline } from '../components/Headline'
 import { DestinationCard } from '../components/DestinationCard'
-import { use, useState } from 'react'
+import { use } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { tripsPromise } from '../lib/api'
 
 export default function DestinationsPage() {
   const destinations = use(tripsPromise())
-  const [query, setQuery] = useState('')
+  // ?q= comes from the nav search too, and keeps a search shareable / reload-safe
+  const [params, setParams] = useSearchParams()
+  const query = params.get('q') ?? ''
+  const setQuery = (q) => setParams(q ? { q } : {}, { replace: true })
   const shown = destinations.filter((d) => d.name.toLowerCase().includes(query.trim().toLowerCase()))
 
   return (

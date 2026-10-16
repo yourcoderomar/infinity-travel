@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { NavLink } from './NavLink'
 import { links } from '../data/links'
@@ -12,6 +12,16 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const burger = useRef(null)
+  const navigate = useNavigate()
+
+  // both search boxes (bar + mobile menu) open the destinations page filtered by ?q=
+  function search(e) {
+    e.preventDefault()
+    const q = new FormData(e.currentTarget).get('q').trim()
+    e.currentTarget.reset()
+    setOpen(false)
+    navigate(q ? `/destinations?q=${encodeURIComponent(q)}` : '/destinations')
+  }
 
   useEffect(() => {
     let last = window.scrollY
@@ -55,7 +65,9 @@ export function Nav() {
       <nav className="iv-nav__links" aria-label="Main">
         {links.map((l) => <NavLink key={l.href} {...l} />)}
       </nav>
-      <input className="iv-nav__search" type="search" placeholder="Search for a place, city, or destination..." aria-label="Search" />
+      <form role="search" className="iv-nav__searchform" onSubmit={search}>
+        <input className="iv-nav__search" name="q" type="search" placeholder="Search for a place, city, or destination..." aria-label="Search destinations" enterKeyHint="search" />
+      </form>
       <Button href="/destinations">Book now</Button>
       <button ref={burger} className="iv-nav__burger" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls={open ? 'iv-menu' : undefined} onClick={() => setOpen(!open)}>
         {open ? <X size={24} strokeWidth={2.25} /> : <Menu size={24} strokeWidth={2.25} />}
@@ -71,9 +83,9 @@ export function Nav() {
             {links.map((l) => <NavLink key={l.href} {...l} onClick={() => setOpen(false)} />)}
           </nav>
           <div className="iv-nav__mfoot">
-          <label className="iv-nav__msearch">
-            <input type="search" placeholder="Search for a place, city, or destination..." aria-label="Search" />
-          </label>
+          <form role="search" className="iv-nav__msearch" onSubmit={search}>
+            <input name="q" type="search" placeholder="Search for a place, city, or destination..." aria-label="Search destinations" enterKeyHint="search" />
+          </form>
           <Button href="/destinations" onClick={() => setOpen(false)}>Book now</Button>
           </div>
         </div>

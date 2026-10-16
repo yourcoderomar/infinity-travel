@@ -15,6 +15,7 @@
 .iv-nav__links a:hover::after, .iv-nav__links a:focus-visible::after { transform: scaleX(1); }
 .iv-nav .iv-btn { white-space: nowrap; }
 .iv-nav__search { margin-left: auto; flex: 0 1 340px; min-width: 0; width: auto; padding: var(--space-3) var(--space-6); border: 0; border-radius: var(--radius-pill); background: var(--light-grey); color: var(--black); font: 400 14px var(--font-sans); transition: flex-basis .3s ease, padding .3s ease; }
+.iv-nav__searchform { display: contents; } /* input stays a flex item of the bar */
 .iv-nav__search:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
 .iv-nav__burger, .iv-nav__menu { display: none; }
 @media (max-width: 1000px) {
